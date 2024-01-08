@@ -8,6 +8,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+          <Route path='/' element={<RegisterPage/>}/>
           <Route path="/register" element={<RegisterPage/>} />
           <Route path='/dashboard' element={<DashBoard/>} />
           <Route path='/login' element={<LoginPage/>} />
