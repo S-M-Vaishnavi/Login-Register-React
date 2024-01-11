@@ -4,51 +4,53 @@ import { UserDetailsApi } from "../services/Api"
 import { logout,isAuthenticated } from "../services/Auth"
 import NavBar from "../components/NavBar"
 
-export default function DashboardPage(){
+export default function DashboardPage() {
     const navigate = useNavigate();
 
-    const [user,setUser] = useState({name:"",email:"",localId:""})
+    const [user, setUser] = useState({ name: "", email: "", localId: "" });
+    const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
-        if(isAuthenticated()){
-            UserDetailsApi().then((response)=>{
+    useEffect(() => {
+        if (isAuthenticated()) {
+            UserDetailsApi().then((response) => {
                 setUser({
-                    name:response.data.users[0].displayName,
-                    email:response.data.users[0].email,
-                    localId:response.data.users[0].localId,
-                })
-            })
+                    name: response.data.users[0].displayName,
+                    email: response.data.users[0].email,
+                    localId: response.data.users[0].localId,
+                });
+                setLoading(false); 
+        
+            });
         }
-    },[])
+    }, []);
 
-    const logoutUser = ()=>{
+    const logoutUser = () => {
         logout();
-        navigate('/login')
-    }
+        navigate('/login');
+    };
 
     if (!isAuthenticated()) {
-        //redirect user to dashboard if they not authenticated
-        return <Navigate to="/login" />
+        return <Navigate to="/login" />;
     }
 
     return (
         <>
-        <NavBar logoutUser={logoutUser}/>
+            <NavBar logoutUser={logoutUser} />
             <main role="main" className="container mt-5">
                 <div className="container">
                     <div className="text-center mt-5">
                         <h3>Dashboard page</h3>
-                        { user.name && user.email && user.localId ?
-                            (<div>
-                                {/* <p className="text-bold " >Hi {user.name}, your Firebase ID is {user.localId}</p> */}
-                                <p className="text-bold " >Hi {user.name}</p>
-                                <p>Your email is {user.email}</p>
-                            </div>)
-                            : <p>Loading...</p>
-                        }
+                        {loading ? (
+                            <p>Loading...</p>
+                        ) : (
+                            <div>
+                                <p className="text-bold">Hi <b>{user.name}</b></p>
+                                <p>Your email is <b>{user.email}</b></p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </main>
         </>
-    )
+    );
 }

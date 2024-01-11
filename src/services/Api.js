@@ -10,7 +10,7 @@ const LOGIN_URL = `/accounts:signInWithPassword?key=${API_KEY}`
 const USERDEATILS_URL = `/accounts:lookup?key=${API_KEY}`
 
 export const RegisterApi = (inputs) => {
-    let data = {displayname:inputs.name,email:inputs.email,password:inputs.password}
+    let data = {displayName:inputs.name,email:inputs.email,password:inputs.password}
     return axios.post(REGISTER_URL,data);
 }
 

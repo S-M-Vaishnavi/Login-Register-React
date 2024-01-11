@@ -40,7 +40,7 @@ const LoginPage = () => {
                 storeUserData(response.data.idToken);
                 console.log(response);
             }).catch((err)=>{
-                if (err.code = "ERR_BAD_REQUEST") {
+                if (err.code == "ERR_BAD_REQUEST") {
                     setErrors({...errors,custom_error:"Invalid Credentials."})
                }
             }).finally(()=>{
@@ -70,7 +70,7 @@ const LoginPage = () => {
                         <form onSubmit={handleSubmit} className="login-form" action="">
                             <div className="form-group">
                                 <label htmlFor="exampleInputEmail1" className="text-uppercase">Email</label>
-                                <input type="email" className="form-control" name="email" id="" placeholder="email" onChange={handleInput} />
+                                <input type="email" className="form-control" name="email"  placeholder="email" onChange={handleInput} />
                                     {errors.email.required ?
                                         (<span className="text-danger" >
                                             Email is required.
@@ -79,7 +79,7 @@ const LoginPage = () => {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1" className="text-uppercase">Password</label>
-                                <input className="form-control" type="password" name="password" placeholder="password" id="" onChange={handleInput}  />
+                                <input className="form-control" type="password" name="password" placeholder="password"  onChange={handleInput}  />
                                 {errors.password.required ?
                                         (<span className="text-danger" >
                                             Password is required.

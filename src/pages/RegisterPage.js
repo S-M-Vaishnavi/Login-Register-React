@@ -79,7 +79,7 @@ export default function RegisterPage() {
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1" className="text-uppercase">Name</label>
 
-                                    <input type="text" className="form-control" onChange={handleInput} name="name" id="" />
+                                    <input type="text" className="form-control" onChange={handleInput} name="name"  />
                                     {errors.name.required ?
                                         (<span className="text-danger" >
                                             Name is required.
@@ -89,7 +89,7 @@ export default function RegisterPage() {
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1" className="text-uppercase">Email</label>
 
-                                    <input type="text" className="form-control" onChange={handleInput} name="email" id="" />
+                                    <input type="text" className="form-control" onChange={handleInput} name="email" />
                                     {errors.email.required ?
                                         (<span className="text-danger" >
                                             Email is required.
@@ -98,7 +98,7 @@ export default function RegisterPage() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputPassword1" className="text-uppercase">Password</label>
-                                    <input className="form-control" type="password" onChange={handleInput} name="password" id="" />
+                                    <input className="form-control" type="password" onChange={handleInput} name="password" />
                                     {errors.password.required ?
                                         (<span className="text-danger" >
                                             Password is required.
